@@ -25,7 +25,7 @@ default: help
 redis.cli: SHELL:=/bin/bash
 redis.cli: REDIS_PASS:=${REDIS_PASS}
 redis.cli:
-	@docker-compose exec redis sh -c 'redis-cli -a ${REDIS_PASS}'
+	@docker compose exec redis sh -c 'redis-cli -a ${REDIS_PASS}'
 
 #❓ help: @ Displays this message
 help: SHELL:=/bin/bash
@@ -46,4 +46,4 @@ stop:
 #🎁 redis.flush: @ Convenience funcion to flush redis keys in docker-compose deployments.
 redis.flush: REDIS_PASS:=${REDIS_PASS}
 redis.flush:
-	@docker-compose exec -e REDISCLI_AUTH=${REDIS_PASS} redis redis-cli FLUSHALL
+	@docker compose exec -e REDISCLI_AUTH=${REDIS_PASS} redis redis-cli FLUSHALL
