@@ -24,7 +24,7 @@ services:
     volumes:
       - 'redis_data:/data'
     networks:
-      default:
+      price_spotter_devops:
         aliases:
           - redis
 
@@ -44,7 +44,7 @@ services:
     volumes:
       - 'pg_data:/var/lib/postgresql/data'
     networks:
-      default:
+      price_spotter_devops:
         aliases:
           - postgres
 
@@ -62,12 +62,12 @@ services:
     volumes:
       - 'pgadmin_data:/var/lib/pgadmin'
     networks:
-      default:
+      price_spotter_devops:
         aliases:
           - pgadmin
 
 networks:
-  default:
+  price_spotter_devops:
     driver: bridge
 volumes:
   redis_data:
