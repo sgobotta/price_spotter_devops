@@ -24,7 +24,12 @@ services:
     volumes:
       - 'redis_data:/data'
     networks:
-      redis:
+      cache:
+        aliases:
+        - redis
+      storage:
+        aliases:
+        - redis
 
   # ----------------------------------------------------------------------------
   # Setup the local postgres server.
@@ -42,7 +47,9 @@ services:
     volumes:
       - 'pg_data:/var/lib/postgresql/data'
     networks:
-      postgres:
+      storage:
+        aliases:
+        - postgres
 
   # ----------------------------------------------------------------------------
   # Setup the local postgres server.
@@ -59,8 +66,8 @@ services:
       - 'pgadmin_data:/var/lib/pgadmin'
 
 networks:
-  postgres:
-  redis:
+  storage:
+  cache:
 volumes:
   redis_data:
   pg_data:
