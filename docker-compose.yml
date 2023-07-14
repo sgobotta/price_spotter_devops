@@ -24,9 +24,7 @@ services:
     volumes:
       - 'redis_data:/data'
     networks:
-      price_spotter_devops:
-        aliases:
-          - redis
+      redis:
 
   # ----------------------------------------------------------------------------
   # Setup the local postgres server.
@@ -44,9 +42,7 @@ services:
     volumes:
       - 'pg_data:/var/lib/postgresql/data'
     networks:
-      price_spotter_devops:
-        aliases:
-          - postgres
+      postgres:
 
   # ----------------------------------------------------------------------------
   # Setup the local postgres server.
@@ -61,14 +57,10 @@ services:
         - 5050:80
     volumes:
       - 'pgadmin_data:/var/lib/pgadmin'
-    networks:
-      price_spotter_devops:
-        aliases:
-          - pgadmin
 
 networks:
-  price_spotter_devops:
-    driver: bridge
+  postgres:
+  redis:
 volumes:
   redis_data:
   pg_data:
