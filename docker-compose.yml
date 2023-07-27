@@ -64,6 +64,10 @@ services:
         - 5050:80
     volumes:
       - 'pgadmin_data:/var/lib/pgadmin'
+    networks:
+      storage:
+        aliases:
+        - pgadmin
 
 networks:
   storage:
