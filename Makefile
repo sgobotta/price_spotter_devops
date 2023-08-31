@@ -4,6 +4,7 @@
 # Environment setup
 #
 
+BINS_DIR = ./bin
 ENV_FILE ?= .env
 
 # add env variables if needed
@@ -74,3 +75,10 @@ stop:
 redis.flush: REDIS_PASS:=${REDIS_PASS}
 redis.flush:
 	@docker compose exec -e REDISCLI_AUTH=${REDIS_PASS} redis redis-cli FLUSHALL
+
+#💻 connect.dev: @ Start dev a tmux session
+connect.dev: SESSION:=dev
+connect.dev: DEV_USER:=${DEV_USER}
+connect.dev: DEV_HOST:=${DEV_HOST}
+connect.dev:
+	@${BINS_DIR}/tmux.sh ${SESSION}
